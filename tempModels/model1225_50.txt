@@ -1,0 +1,51 @@
+0.944444444444444::userLocation.
+0.073529411764706::negativeSentiment.
+0.926470588235294::positiveSentiment.
+0.476307189542484::tourism.
+0.18218954248366::hotel.
+0.297385620915033::vacation.
+0.003267973856209::health_care.
+0.705882352941177::location.
+0.1665::visitLocation :- userLocation, positiveSentiment, tourism, location.
+0.096::visitLocation :- userLocation, positiveSentiment, location.
+0.0725::visitLocation :- userLocation, positiveSentiment.
+0.039::visitLocation :- userLocation, positiveSentiment, tourism, vacation, location.
+0.032::visitLocation :- userLocation, positiveSentiment, vacation, location.
+0.0295::visitLocation :- userLocation, positiveSentiment, tourism, hotel, vacation.
+0.025::visitLocation :- userLocation, positiveSentiment, hotel, location.
+0.019::visitLocation :- userLocation, positiveSentiment, tourism, hotel, vacation, location.
+0.017::visitLocation :- userLocation, positiveSentiment, vacation.
+0.014::visitLocation :- userLocation, positiveSentiment, tourism, vacation.
+0.014::visitLocation :- userLocation, negativeSentiment, location.
+0.01::visitLocation :- userLocation, positiveSentiment, tourism, hotel, location.
+0.007::visitLocation :- positiveSentiment.
+0.007::visitLocation :- positiveSentiment, location.
+0.006::visitLocation :- userLocation, positiveSentiment, hotel.
+0.006::visitLocation :- userLocation, negativeSentiment.
+0.0055::visitLocation :- userLocation, negativeSentiment, vacation.
+0.0055::visitLocation :- userLocation, negativeSentiment, vacation, location.
+0.005::visitLocation :- userLocation, negativeSentiment, hotel.
+0.0045::visitLocation :- userLocation, positiveSentiment, hotel, vacation.
+0.0035::visitLocation :- positiveSentiment, hotel, location.
+0.003::visitLocation :- positiveSentiment, hotel.
+0.0025::visitLocation :- positiveSentiment, tourism, vacation, location.
+0.0025::visitLocation :- userLocation, positiveSentiment, tourism.
+0.0025::visitLocation :- positiveSentiment, vacation, location.
+0.002::visitLocation :- positiveSentiment, tourism, location.
+0.002::visitLocation :- userLocation, positiveSentiment, hotel, vacation, location.
+0.0015::visitLocation :- userLocation, positiveSentiment, tourism, hotel, vacation, health_care.
+0.0015::visitLocation :- negativeSentiment.
+0.0015::visitLocation :- positiveSentiment, vacation.
+0.0015::visitLocation :- userLocation, negativeSentiment, tourism, vacation, location.
+0.001::visitLocation :- userLocation, negativeSentiment, tourism, vacation.
+0.001::visitLocation :- negativeSentiment, hotel, vacation, location.
+0.0005::visitLocation :- userLocation, negativeSentiment, tourism.
+0.0005::visitLocation :- userLocation, negativeSentiment, health_care.
+0.0005::visitLocation :- negativeSentiment, location.
+0.0005::visitLocation :- positiveSentiment, tourism, vacation.
+0.0005::visitLocation :- negativeSentiment, vacation.
+0.0005::visitLocation :- userLocation, negativeSentiment, hotel, vacation, location.
+0.0005::visitLocation :- positiveSentiment, tourism, hotel, vacation, location.
+0.0005::visitLocation :- userLocation, negativeSentiment, hotel, location.
+0.0005::visitLocation :- negativeSentiment, tourism, vacation, location.
+0.0005::visitLocation :- userLocation, negativeSentiment, tourism, location.

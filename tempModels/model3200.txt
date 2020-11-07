@@ -1,0 +1,70 @@
+0.977230193387399::userLocation.
+0.958827199001872::positiveSentiment.
+0.041172800998129::negativeSentiment.
+0.34061135371179::tourism.
+0.268870867124142::vacation.
+0.653462258265752::location_in_tweet.
+0.09731752963194::restaurant.
+0.134435433562071::hotel.
+0.286248830682881::visitLocation :- userLocation, positiveSentiment.
+0.19176800748363::visitLocation :- userLocation, positiveSentiment, location_in_tweet.
+0.153726223885251::visitLocation :- userLocation, positiveSentiment, tourism, location_in_tweet.
+0.090115372622389::visitLocation :- userLocation, positiveSentiment, tourism, vacation, location_in_tweet.
+0.061428125974431::visitLocation :- userLocation, positiveSentiment, vacation, location_in_tweet.
+0.024321796071094::visitLocation :- userLocation, positiveSentiment, tourism, vacation, location_in_tweet, restaurant, hotel.
+0.0177736202058::visitLocation :- userLocation, positiveSentiment, location_in_tweet, restaurant, hotel.
+0.017461802307452::visitLocation :- userLocation, positiveSentiment, tourism, vacation, restaurant, hotel.
+0.015279077019021::visitLocation :- userLocation, negativeSentiment, location_in_tweet.
+0.014967259120674::visitLocation :- userLocation, positiveSentiment, tourism, vacation, location_in_tweet, hotel.
+0.014343623323979::visitLocation :- userLocation, positiveSentiment, location_in_tweet, hotel.
+0.01060180854381::visitLocation :- userLocation, positiveSentiment, vacation.
+0.007483629560337::visitLocation :- userLocation, positiveSentiment, vacation, location_in_tweet, restaurant, hotel.
+0.006548175865295::visitLocation :- userLocation, positiveSentiment, tourism, location_in_tweet, restaurant, hotel.
+0.006548175865295::visitLocation :- userLocation, negativeSentiment, vacation, location_in_tweet.
+0.005612722170253::visitLocation :- userLocation, positiveSentiment, tourism, vacation, location_in_tweet, restaurant.
+0.005612722170253::visitLocation :- userLocation, positiveSentiment, vacation, location_in_tweet, hotel.
+0.005612722170253::visitLocation :- userLocation, positiveSentiment, tourism, location_in_tweet, hotel.
+0.00467726847521::visitLocation :- userLocation, positiveSentiment, tourism, vacation.
+0.00467726847521::visitLocation :- userLocation, positiveSentiment, tourism.
+0.003741814780168::visitLocation :- userLocation, negativeSentiment, tourism, vacation, location_in_tweet.
+0.003741814780168::visitLocation :- userLocation, negativeSentiment.
+0.003429996881821::visitLocation :- positiveSentiment.
+0.003429996881821::visitLocation :- positiveSentiment, location_in_tweet.
+0.003429996881821::visitLocation :- userLocation, positiveSentiment, location_in_tweet, restaurant.
+0.003429996881821::visitLocation :- positiveSentiment, location_in_tweet, hotel.
+0.002494543186779::visitLocation :- positiveSentiment, vacation, location_in_tweet.
+0.002494543186779::visitLocation :- userLocation, positiveSentiment, vacation, hotel.
+0.002182725288432::visitLocation :- positiveSentiment, tourism, location_in_tweet.
+0.002182725288432::visitLocation :- userLocation, negativeSentiment, location_in_tweet, restaurant, hotel.
+0.002182725288432::visitLocation :- userLocation, positiveSentiment, restaurant, hotel.
+0.002182725288432::visitLocation :- userLocation, positiveSentiment, vacation, location_in_tweet, restaurant.
+0.001870907390084::visitLocation :- userLocation, positiveSentiment, hotel.
+0.001870907390084::visitLocation :- positiveSentiment, tourism, vacation, location_in_tweet.
+0.001247271593389::visitLocation :- userLocation, negativeSentiment, restaurant, hotel.
+0.000935453695042::visitLocation :- negativeSentiment, location_in_tweet.
+0.000935453695042::visitLocation :- userLocation, negativeSentiment, tourism, location_in_tweet.
+0.000935453695042::visitLocation :- negativeSentiment, vacation, location_in_tweet, restaurant, hotel.
+0.000935453695042::visitLocation :- positiveSentiment, restaurant, hotel.
+0.000935453695042::visitLocation :- userLocation, positiveSentiment, vacation, restaurant, hotel.
+0.000935453695042::visitLocation :- userLocation, negativeSentiment, location_in_tweet, hotel.
+0.000935453695042::visitLocation :- userLocation, negativeSentiment, vacation.
+0.000623635796695::visitLocation :- negativeSentiment.
+0.000623635796695::visitLocation :- positiveSentiment, location_in_tweet, restaurant.
+0.000623635796695::visitLocation :- userLocation, positiveSentiment, tourism, vacation, hotel.
+0.000623635796695::visitLocation :- userLocation, positiveSentiment, tourism, hotel.
+0.000623635796695::visitLocation :- userLocation, negativeSentiment, vacation, restaurant.
+0.000623635796695::visitLocation :- userLocation, positiveSentiment, tourism, restaurant.
+0.000623635796695::visitLocation :- userLocation, positiveSentiment, vacation, restaurant.
+0.000311817898347::visitLocation :- negativeSentiment, vacation.
+0.000311817898347::visitLocation :- userLocation, negativeSentiment, vacation, location_in_tweet, hotel.
+0.000311817898347::visitLocation :- positiveSentiment, tourism, vacation, location_in_tweet, restaurant, hotel.
+0.000311817898347::visitLocation :- negativeSentiment, tourism, vacation, location_in_tweet.
+0.000311817898347::visitLocation :- positiveSentiment, vacation, location_in_tweet, restaurant.
+0.000311817898347::visitLocation :- positiveSentiment, tourism, location_in_tweet, hotel.
+0.000311817898347::visitLocation :- positiveSentiment, vacation.
+0.000311817898347::visitLocation :- userLocation, negativeSentiment, tourism, vacation, location_in_tweet, hotel.
+0.000311817898347::visitLocation :- userLocation, negativeSentiment, tourism, location_in_tweet, hotel.
+0.000311817898347::visitLocation :- userLocation, negativeSentiment, location_in_tweet, restaurant.
+0.000311817898347::visitLocation :- userLocation, negativeSentiment, tourism, vacation, location_in_tweet, restaurant, hotel.
+0.000311817898347::visitLocation :- userLocation, negativeSentiment, tourism.
+0.000311817898347::visitLocation :- userLocation, positiveSentiment, restaurant.
