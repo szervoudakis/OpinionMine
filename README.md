@@ -1,3 +1,8 @@
 # OpinionMine
-OpinionMine: A Bayesian-based Framework for Opinion Mining using Twitter Dat
-Test readme
+OpinionMine: A Bayesian-based Framework for Opinion Mining using Twitter Data
+
+INSTALL THESE BEFORE RUN THE PROJECT
+
+pip install problog
+pip install tkintertable
+pip install csv-reader
