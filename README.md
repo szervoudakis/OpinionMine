@@ -6,3 +6,6 @@ INSTALL THESE BEFORE RUN THE PROJECT
 pip install problog
 pip install tkintertable
 pip install csv-reader
+pip install numpy
+pip install vaderSentiment
+
