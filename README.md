@@ -25,4 +25,4 @@ scikit-learn	0.21.3
 
 scipy	1.4.1
 
-After the installation run 'appGUI.py' script
+After the installation run 'executeMachineLearningSystem.py' script
