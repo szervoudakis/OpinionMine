@@ -49,11 +49,11 @@ def evaluationOfNewTweet(tweetText,userLoc):
     today = date.today()
     tweet1 = NewTweet(tweetText,today , userLoc)
     evidenceDict = sentiment_analyzer_scores(tweet1.text, analyzer,
-                                             evidenceDict)  # arxika tsekaroume ean einai 8etikh h arnhtikh h protash
+                                             evidenceDict)
     evidenceDict = readRelatedWordsDict(tweet1.text,
-                                        evidenceDict)  # edw elegxoume ean uparxoun kapoia entities wste na ginoun oi antistoixes metavlhtes true
+                                        evidenceDict)
     evidenceDict = checkPlace(tweet1.location,
-                              evidenceDict)  # edw elegxoume ean h topo8esia apo tin opoia katagete o xrhsths einai ektos krhths
+                              evidenceDict)
     evidenceDict = {Term(k): v for k, v in evidenceDict.items()}
     evidence = [(key, value) for key, value in evidenceDict.items()]
     lf = engine.ground_all(db, evidence=evidence, queries=[query])

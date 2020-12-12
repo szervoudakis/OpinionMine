@@ -2,7 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
-
+from sklearn.metrics import (brier_score_loss, precision_score, recall_score,
+                             f1_score)
 # generate random data-set
 np.random.seed(0)
 x = np.random.rand(100, 1)

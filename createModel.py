@@ -51,16 +51,10 @@ def incrementalLearning(currentRandomVars, sizeOfCurrentSet, currentEvidence):
     else:
         newEvidence = currentEvidence
 
-    # edw vgazw to pososto pou
-    # 8a parei to ka8e dataset, an uparxei palio
     if len(content) > 0:
         total = int(content[0]) + sizeOfCurrentSet
         percentageOfCurrentDataset = (100 * sizeOfCurrentSet) / total
         percentageOfOldDataset = 100 - percentageOfCurrentDataset
-        print("palio einai toso ", percentageOfOldDataset)
-        print("current einai toso ", percentageOfCurrentDataset)
-        # pairnw apo to palio model
-        # tis metavlites kai ta varh tous
         for i in range(1, len(content)):
             if ":-" in content[i]:
                 break
@@ -71,7 +65,7 @@ def incrementalLearning(currentRandomVars, sizeOfCurrentSet, currentEvidence):
         percentageOfCurrentDataset = 100
 
     facts = ""
-    # an uparxei palio dataset
+
     if os.path.exists('models/examples.npy'):
         for key, value in currentRandomVars.items():
             if checkKey(oldRandomVariables, key) == 1:
@@ -95,41 +89,38 @@ def incrementalLearning(currentRandomVars, sizeOfCurrentSet, currentEvidence):
     np.save("models/examples.npy", np.array(newEvidence))
     return newEvidence, facts, len(newEvidence)
 
-
 def createModel(fileName):
     tweetsList = readCSV(fileName)
     analyzer = SentimentIntensityAnalyzer()
-    # στην μεταβλητη facts δημιουργουνται ολες οι τυχαιες μεταβλητες
+    # in variable facts create all the random variables
     facts = """t(_)::userLocation.\n"""
     neg = False
     pos = False
     keywordsList = ['']
     examples = []
-    randomVariables = {}  # einai to dictionary opou apo8hkeuontai oi tuxaies metablites pou 8a dhmiourgh8oun parakatw
+    randomVariables = {}
     # create random variables based on dataset
     for i in range(1, len(tweetsList)):
-        # εαν στην λιστα που ειναι αποθηκευμενα τα tweets υπαρχουν αρνητικα tweets τοτε δημιουργησε την τυχαια μεταβλητη negativeSentiment
+        # if exists in csv negative sentiment create the random var negativeSentiment
         if sentiment_analyzer(tweetsList[i].text, analyzer) == -1 and neg == False:
-            print(i)
+            # print(i)
             facts = facts + "t(_)::negativeSentiment.\n"
             neg = True
-        # εαν στην λιστα που ειναι αποθηκευμενα τα tweets υπαρχουν θετικα tweets τοτε δημιουργησε την τυχαια μεταβλητη positiveSentiment
+        # if exists in csv positive sentiment create the random var negativeSentiment positiveSentiment
         if sentiment_analyzer(tweetsList[i].text, analyzer) == 1 and pos == False:
             facts = facts + "t(_)::positiveSentiment.\n"
             pos = True
-        # εδω καλουμε την συναρτηση readRelatedWord στην οποια ελεγχουμε τι υπαρχει απο τις τυχαιες μεταβλητές-κατηγοριες στο tweet
+
         keywordsList.append(readRelatedWords(tweetsList[i].text))
 
-    print(keywordsList)
-    keywordsList = list(dict.fromkeys(keywordsList))  # afairw ta dipla wste na uparxei mia fora h ka8e tuxaia metablhth
+    keywordsList = list(dict.fromkeys(keywordsList))  #delete all duplicates
     keywordsList.remove('')
-    print(keywordsList)
     temp = []
-    # dhmiourgw tis metavlites pou sxetizontai me to keywords variable
+
     for i in range(0, len(keywordsList)):
         facts = "" + facts + "t(_)::" + keywordsList[i] + ".\n"
 
-    # edw dhmiourgw tis metavlhtes me vash ta facts pou exoun dhmiourgh8ei parapanw
+    # create the random variables in problog syntax
     for line in facts.splitlines():
         if ":-" not in line:
             temp = line.split("t(_)::")
@@ -138,39 +129,36 @@ def createModel(fileName):
 
     for i in range(0, len(keywordsList)):
         randomVariables[keywordsList[i]] = False
-    # edw dhmiourgoume tis metavlhtes pou 8a exoun ton tin idiotita Term.
 
-    # edw 8a dhmiourghsw to evidence set, pou me vash autou, 8a dhmiourgh8oun oi kanones dunamika
     initialDict = randomVariables.copy()
     examples1 = []
     numpyExamples = []
     testar = []
-    # σε αυτη την επαναληπτικη διαδικασια, ουσιαστικα βάζει στην lista examples ολα τα evidence
+    # with these for loop in llist example put all evidences
     for i in range(1, len(tweetsList)):
         tempDict = initialDict.copy()
         # print(i)
         tempDict = sentiment_analyzer_scores(tweetsList[i].text, analyzer,
-                                             tempDict)  # edw pairnei times gia sentiment analysis 0 -1 1
+                                             tempDict)  # sentiment analysis in each tweet
         tempDict = readRelatedWordsDict(tweetsList[i].text,
-                                        tempDict)  # edw pairnei true false times gia tis metavlhtes keywords pou dhmiourgh8hkan
+                                        tempDict)  # NER in tweets
         tempDict = checkPlace(tweetsList[i].location,
-                              tempDict)  # edw tsekarei to user location tou xrhsth pou ekane to tweet (ean einai apo tin krhth h oxi)
+                              tempDict)  #
 
         orderedDictionary = collections.OrderedDict(sorted(tempDict.items()))
         orderedDictionary = {Term(k): v for k, v in
-                             orderedDictionary.items()}  # edw to key tou dictionary to kanei convert se Term
+                             orderedDictionary.items()}  # conver each key from dictionary to Term
         examples.append([(key, value) for key, value in
-                         orderedDictionary.items()])  # edw kanei append ta evidence pou einai apo8hkeumena sto tempDict
+                         orderedDictionary.items()])  # append the instance of evidence in examples
 
-    # το c ειναι μια λιστα η οποια περιεχει evidences και ποσες φορες εμφανιστικαν το καθενα
+
     c = Counter(tuple(x) for x in iter(examples))
     newString = ""
     newExamples = []
 
-    # eprepe na kanw install tin 16.2 version gia na dior8w8ei to error allow_pickle false
-    print(np.__version__)
+    # print(np.__version__)
 
-    # εδω δημιουργουνται οι κανονες
+    # here create the rules
     for key, value in c.most_common():
         rules = "visitLocation:-"
         final = value / len(tweetsList)
@@ -186,36 +174,35 @@ def createModel(fileName):
         newString = newString + ".\n"
     finalModel = facts + newString
 
-    # στην συναρτηση αυτη, δινουμε ως ορισμα, το μοντελο (δλδ τα facts και τα τους κανονες που δημιουργηθηκαν με βαση τα evidence)
+    # begin train of model based on evidences and the current model
     score, weights, atoms, iteration, lfi_problem = lfi.run_lfi(PrologString(finalModel), examples)
     trainedModel = lfi_problem.get_model()
 
     tempForSplit = trainedModel.split("\n")
     currentRandomVars = {}
-    # apo to ekpedeumeno montelo 8elw ta varh twn tuxaiwn metavlitwn, wste na ta xrhsimopoihsw sto incremental algori8mo pou eftiaksa
+
     for i in range(0, len(tempForSplit)):
         if ":-" in tempForSplit[i]:
             break
-        pososto = tempForSplit[i].split('::')
-        key = pososto[1].split(".")
-        currentRandomVars[key[0]] = pososto[0]
+        pos = tempForSplit[i].split('::')
+        key = pos[1].split(".")
+        currentRandomVars[key[0]] = pos[0]
 
-    # # edw kalw ton algori8mo pou kanei to incremental learning
+    # begin incremental learning
     newExamples, facts, lenOfSet = incrementalLearning(currentRandomVars, len(tweetsList), examples)
-    # το c1 ειναι μια λιστα η οποια περιεχει evidences και ποσες φορες εμφανιστικαν το καθενα
+
     rulesAndNum = {}
     convertArr = []
     for i in range(0,len(newExamples)):
         convertArr.append([(str(k),v) for (k,v) in newExamples[i]])
 
-    kialo=[]
+    arrayForNewEvidence=[]
     for i in range(0,len(newExamples)):
-      kialo.append([(str(k),v) for k,v in newExamples[i] if (v==True)])
+      arrayForNewEvidence.append([(str(k),v) for k,v in newExamples[i] if (v==True)])
 
-    rulesAndNum = Counter(tuple(y) for (y) in iter(kialo))
-    # εδω δημιουργουνται οι κανονες
+    rulesAndNum = Counter(tuple(y) for (y) in iter(arrayForNewEvidence))
+    #create the rules based on evidence set
     finalRules = ""
-    print(facts)
     for key, value in rulesAndNum.most_common():
         rules = "visitLocation:-"
         final = value / (lenOfSet - 1)
@@ -231,10 +218,7 @@ def createModel(fileName):
         finalRules = finalRules + ".\n"
     finalModelIncremental = facts + finalRules
 
-    # αποθηκευω το εκπευδευμενο μοντελο σε ενα text
-    # αρχειο, που οταν κανω το evaluation του μοντελου,
-    # να διαβαζω το txt αρχειο
-    # για να μην ξανατρεχει αυτο το σκριπτ παλι.
+    # store the trained model in txt file
     if os.path.exists('models/model.txt'):
         os.remove('models/model.txt')
     # apo8hkeuw to trained model se txt arxeio
@@ -242,7 +226,4 @@ def createModel(fileName):
     text_file.write(str(lenOfSet) + "\n")
     text_file.write(finalModelIncremental)
     text_file.close()
-
-#createModel('clear.csv')
-print(np.__version__)
-#numpy-1.17.4
+    print('the model trained successfully')

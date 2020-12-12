@@ -10,8 +10,6 @@ from problog.logic import Term
 from problog.learning import lfi
 from problog.tasks import sample
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-
-
 from EntitiesOfTweet import NewTweet
 from functions import sentiment_analyzer_scores, readRelatedWordsDict, checkPlace
 from functions import *
@@ -22,7 +20,8 @@ import collections
 import json
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 
-def eval(file):
+
+def evalutionOfTrainedModel(file):
     randomVariables = {}
     y_pred=[]
     analyzer = SentimentIntensityAnalyzer()
@@ -68,14 +67,13 @@ def eval(file):
     db = engine.prepare(p)
     lf = engine.ground_all(db)
     query = Term('visitLocation')
-    print(db)
     count = 0
     TruePositive = 0
     for i in range(1, len(tweetsList)):
         evidence = []
         evidenceDict = {}
         evidenceDict = randomVariables.copy()
-        print(i, '----------------------------------new tweet------------------------------------------------------')
+        # print(i, '----------------------------------new tweet------------------------------------------------------')
         tweet1 = NewTweet(tweetsList[i].text, tweetsList[i].create, tweetsList[i].location)
         evidenceDict = sentiment_analyzer_scores(tweet1.text, analyzer,
                                                  evidenceDict)  # arxika tsekaroume ean einai 8etikh h arnhtikh h protash
@@ -90,58 +88,27 @@ def eval(file):
         count = count + 1
         for tweet, score in result.items():
             TruePositive = TruePositive + score
-            print(score);
+            # print(score);
             y_pred.append(score)
 
     evidence = []
     evidenceDict = {}
     evidenceDict = randomVariables.copy()
-    print(count)
-    print("-----------------------------------------------------------------------")
-    print("This dataset contains ", count, " tweets")
-    print("truepos",TruePositive)
-    finalPososto = TruePositive / count
-    # print("to pososto episkepshs ths Krhths einai ", finalPososto, "")
 
+    # print("-----------------------------------------------------------------------")
+    # print("This dataset contains ", count, " tweets")
+    # print("truepos",TruePositive)
+    finalPososto = TruePositive / count
 
     return y_pred
-# tweet1 = NewTweet(textTest,'2/5/19', 'Paris')
-# evidenceDict = sentiment_analyzer_scores(tweet1.text, analyzer,
-#                                          evidenceDict)  # arxika tsekaroume ean einai 8etikh h arnhtikh h protash
-# evidenceDict = readRelatedWordsDict(tweet1.text,
-#                                     evidenceDict)  # edw elegxoume ean uparxoun kapoia entities wste na ginoun oi antistoixes metavlhtes true
-# evidenceDict = checkPlace(tweet1.location,
-#                           evidenceDict)  # edw elegxoume ean h topo8esia apo tin opoia katagete o xrhsths einai ektos krhths
-# evidenceDict = {Term(k): v for k, v in evidenceDict.items()}
-# evidence = [(key, value) for key, value in evidenceDict.items()]
-# lf = engine.ground_all(db, evidence=evidence, queries=[query])
-# result = get_evaluatable().create_from(lf).evaluate()
-# print(evidenceDict)
-#test1=eval('testSet/trump.csv')
-# test2=eval('testSet/test2_20.csv')
-# test3=eval('testSet/test3_20.csv')
-y_pred=[]
-y_pred=eval('testSet/testSet.csv')
-y_true=[]
-#edw vazoume tin timh alh8eias, pou einai h megisth pi8anotita pou pairnei to montelo gia thn episkepsh sthn krhth
-for i in range(len(y_pred)):
-  y_true.append(1.00)
 
-print("The mean squared error of our system is (MSE): ",mean_squared_error(y_true, y_pred))
-print("The root mean squared error of our system is (RMSE): ",sqrt(mean_squared_error(y_true, y_pred)))
-print("The mean absolute error of our system is (MAE):",mean_absolute_error(y_true, y_pred))
+
+
+# with open('metrics.csv', 'w', newline='') as csvfile:
+#     fieldnames = ['actual', 'predicted_value']
+#     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+#     writer.writeheader()
+#     for i in range(1,len(y_pred)):
+#         temp = str(y_pred[i])
+#         writer.writerow({'actual': '1', 'predicted_value': temp})
 #
-# generate random data-set
-#np.random.seed(0)
-x = y_true
-# y_true=[1,1,1]
-# y_pred=[0.4,0.3,0.1]
-
-with open('metrics.csv', 'w', newline='') as csvfile:
-    fieldnames = ['actual', 'predicted_value']
-    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-    writer.writeheader()
-    for i in range(1,len(y_pred)):
-        temp = str(y_pred[i])
-        writer.writerow({'actual': '1', 'predicted_value': temp})
-
