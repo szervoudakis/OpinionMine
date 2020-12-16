@@ -17,7 +17,7 @@ REQUIREMENTS
 
 numpy 1.16.1
 
-pandas 0.25.1
+pandas 0.24.1
 
 pip	19.0.3
 
