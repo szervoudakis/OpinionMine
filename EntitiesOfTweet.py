@@ -4,7 +4,7 @@ class NewTweet:
         self.created = created
         self.location = location
 
-
+#class for tweets with properties text,username, creation date, location and hashtags
 class Tweet:
     def __init__(self, text, username, create, location, hashtags):
         self.text = text

@@ -10,7 +10,8 @@ from createModel import createModel
 from evaluationOfNewTweet import evaluationOfNewTweet
 
 LARGE_FONT = ("Verdana", 16)
-
+#this py file contains all pages for GUI
+#in this py file we build the graphical user interface, with tkinter library
 class SeaofBTCapp(tk.Tk):
 
     def __init__(self, *args, **kwargs):
@@ -37,7 +38,7 @@ class SeaofBTCapp(tk.Tk):
         frame = self.frames[cont]
         frame.tkraise()
 
-
+#this class contains the homepage
 class StartPage(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -46,7 +47,7 @@ class StartPage(tk.Frame):
         label.pack(pady=10, padx=10)
         frame = tk.Frame(self)
         frame.pack()
-
+#create the frame and buttons
         bottomframe = tk.Frame(self)
         bottomframe.pack(side=tk.BOTTOM)
         trainButton = tk.Button(frame, text="Train Model", fg="black", command=lambda: controller.show_frame(PageOne))
@@ -56,7 +57,7 @@ class StartPage(tk.Frame):
         exitButton = tk.Button(frame, text="     Exit     ", fg="red", command=lambda: quit())
         exitButton.pack(side=tk.LEFT, pady=30, padx=10)
 
-
+#this class contains the page for train model
 class PageOne(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -67,7 +68,7 @@ class PageOne(tk.Frame):
         message = ["Chose the trainset"]
         onlyfiles = [f for f in listdir('datasets/') if isfile(join('datasets/', f))]
         listOfOptions = message + onlyfiles
-
+#create the combobox
         combo = Combobox(self)
         combo['values'] = listOfOptions
         combo.current(0)
@@ -89,10 +90,12 @@ class PageOne(tk.Frame):
          with open("models/model.txt", "r") as myfile:
             rules = myfile.readlines()
          rulesInsert = ""
+         #add rules in text field
          for i in range(1,len(rules)):
             rulesInsert = rulesInsert + rules[i] + "\n"
          txt.insert(INSERT, rulesInsert)
          txt.config(state=DISABLED)
+         #after the training of model show the message
          if len(rules)>0:
             mes="Τhe model was trained with "+rules[0]+ "samples"
          else:
@@ -107,7 +110,7 @@ class PageOne(tk.Frame):
         clearButton.pack()
         homeButton.pack()
         txt.pack()
-
+#this class contains the page for trained model
 class PageTwo(tk.Frame):
 
     def __init__(self, parent, controller):
@@ -139,6 +142,7 @@ class PageTwo(tk.Frame):
         label3.pack(pady=16, padx=10)
         txtForOpinion.pack()
 
+#this function delete the current model
 def deleteModel(txt,lbl):
   if os.path.exists('models/model.txt'):
     txt.configure(state='normal')
@@ -150,6 +154,7 @@ def deleteModel(txt,lbl):
     for i in r:
        os.remove(i)
     lbl['text']="there is no trained model"
+#clear fields
 def clearFields(txt,txtLocation,txtForOpinion):
     txtForOpinion.configure(state='normal')
     txt.delete(1.0, tk.END)
@@ -159,11 +164,10 @@ def clearFields(txt,txtLocation,txtForOpinion):
     txtForOpinion.delete(1.0, tk.END)
     txtForOpinion.insert(1.0, "")
     txtForOpinion.config(state=DISABLED)
-
+#function that present the prediction
 def showPrediction(txt,txtLoc,txtOp):
     fetched_content = txt.get('1.0', 'end-1c')
     fetched_content1 = txtLoc.get('1.0', 'end-1c')
-
 
     if fetched_content == "" or fetched_content1=="":
         messagebox.showinfo('Message', 'Please fill in the form')
@@ -194,6 +198,7 @@ def showPrediction(txt,txtLoc,txtOp):
        txtOp.insert(1.0,finalMes)
        txtOp.config(state=DISABLED)
 
+#function for train the model
 def beginTrain(selectedValue,message,txt,lbl):
     if (selectedValue == message[0]):
         messagebox.showinfo('Message title', 'Please insert the dataset that we use in the train proccess ')

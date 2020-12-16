@@ -18,16 +18,16 @@ from problog.tasks.dtproblog import dtproblog
 import sys
 import csv
 import pandas as pd
+#this file contains all functions that used of our system
 
+#read csv file row by row and store content in list
 def readCSV(nameOfFile):
     tweetsList = []
     nameOfFile="datasets/"+nameOfFile
-    # σε αυτο το script ουστιαστικα αποθηευω ολα τα tweets σε μια λιστα, η οποια περιεχει στιγμιοτυπα της κλασης Tweet (δειτε το αρχειο EntitiesOfTweet.py)
+    #
     with open(nameOfFile, 'r', encoding='utf-8-sig') as csvFile:
         reader = csv.reader(csvFile)
-        # εδω η επαναληπτικη εντολη ουσιαστικα παιρνει γραμμη - γραμμη τα στοιχεια που ειναι αποθηκευμενα
-        # στο CSV αρχειο και τα τοποθετει στην λιστα. Το εκανα αυτο διοτι, μια λιστα μπορω να την διαχειριστω πιο ευκολα
-        # απο οτι ενα αρχειο
+
         count=0
         for row in reader:
             count=count+1
@@ -35,13 +35,11 @@ def readCSV(nameOfFile):
             hashtags = collectHashTags(temp)
             tweetsList.append(
                 Tweet(row[0], row[1], row[2], row[3],
-                      hashtags))  # στην λιστα κανω append καθε στιγμιοτυπο, το καθε στιγμιοτυπο περιεχει
-            # τα εξης, το κειμενο, το username, την τοποθεσια του χρηστη και τα hashtags που χρησιμοποιησε
-            # στο tweet που εκανε
+                      hashtags))
     csvFile.close()
 
     return tweetsList
-
+#function that takes as input text, analyser (vader tool)  and the current randomvariables
 def sentiment_analyzer_scores(tweeterText, analyser, randomVariables):
     score = analyser.polarity_scores(tweeterText)
     lb = score['compound']
@@ -58,13 +56,13 @@ def sentiment_analyzer_scores(tweeterText, analyser, randomVariables):
          randomVariables['positiveSentiment'] = None
     return randomVariables
 
-
+#check if key exists in dict
 def checkKey(dict, key):
     if key in dict.keys():
         return 1
     else:
         return 0
-
+#return the score of text (sentiment analysis)
 def sentiment_analyzer(tweetText, analyser):
     score = analyser.polarity_scores(tweetText)
     lb = score['compound']
@@ -74,7 +72,7 @@ def sentiment_analyzer(tweetText, analyser):
         return 0
     else:
         return -1
-
+#check if text contains some location of Crete
 def checkPlace(text,randomVariables):
     str = []
     with open('datasets/placesCopy.csv', 'r', encoding='utf-8-sig') as csvFile:
@@ -100,7 +98,7 @@ def collectWords(str):
         str2.append(i)
 
     return str2
-
+#collect all hashtag from list
 def collectHashTags(finalList):
     hashTags = []
     for i in range(0, len(finalList)):
@@ -119,7 +117,7 @@ def printListOfTweets(tweetsList):
         print("user location---->  %s" % tweetsList[i].location)
         print("user hashtags---->  %s" % tweetsList[i].hashtags)
 
-
+#if some related word - synonym word exist in a text , return the category (random variable)
 def readRelatedWords(sentence):
     tempList = returnFirstColByRelatedWords()
     with open('datasets/relatedWords.csv', 'r', encoding='utf-8-sig') as csvFile:
@@ -130,6 +128,7 @@ def readRelatedWords(sentence):
                     return tempList[i]
                     csvFile.close()
     return ""
+#if in text exist some synonym word return put the True value in the random variable
 def readRelatedWordsDict(sentence,tempdictionary):
     tempList = returnFirstColByRelatedWords()
     with open('datasets/relatedWords.csv', 'r', encoding='utf-8-sig') as csvFile:
@@ -141,7 +140,7 @@ def readRelatedWordsDict(sentence,tempdictionary):
                   break
     return tempdictionary
     csvFile.close()
-
+#if in text exist some location of Crete, return true
 def checkLocationInTweet(word):
     with open('datasets/relatedWords.csv', 'r', encoding='utf-8-sig') as csvFile:
         reader = csv.reader(csvFile)
@@ -159,7 +158,7 @@ def printRandomVariables(randomVariables):
     print("------------------")
     print("all random variables are %s" % randomVariables.keys().__len__())
 
-
+#return all categories from csv file
 def returnFirstColByRelatedWords():
 
     with open('datasets/relatedWords.csv', 'r', encoding='utf-8-sig') as csvFile:
@@ -168,6 +167,7 @@ def returnFirstColByRelatedWords():
             break
         return row
         csvFile.close()
+#convert array to list
 def convertToSet(numpyArray):
     convertedArray=[]
     for i in range(0, len(numpyArray)):
@@ -175,9 +175,8 @@ def convertToSet(numpyArray):
         for [k, v] in numpyArray[i]:
             arr.append((k, v))
         convertedArray.append(arr)
-
     return convertedArray
-
+#sort the examples
 def sortExamples(examples):
     for i in range(0, len(examples)):
         examples[i].sort()

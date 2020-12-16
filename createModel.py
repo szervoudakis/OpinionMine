@@ -27,7 +27,12 @@ import sys
 import csv
 import pandas as pd
 import numpy as np
-
+#the createModel.py contains all the training process
+#the array examples.npy contains all evidences based on that create the trained model (model.txt)
+#in array oldEvidence is all the evidences (from example.npy)
+#this function is for incremental learning proccess
+#currentEvidence is the array that contains all evidences based on new train set
+#in array newEvidence that has all evidences (from model.txt model , and the current model)
 def incrementalLearning(currentRandomVars, sizeOfCurrentSet, currentEvidence):
     oldRandomVariables = {}
     newRandomVariables = {}
@@ -35,15 +40,13 @@ def incrementalLearning(currentRandomVars, sizeOfCurrentSet, currentEvidence):
     newEvidence = []
     txtEvidence = {}
     content = []
-
+    #if model exist open and read the content
     if os.path.exists('models/model.txt'):
         with open('models/model.txt') as f:
             content = f.readlines()
             content = [x.strip() for x in content]
 
-    # ean exei ginei ma8hsh me kapoio dataset
     if os.path.exists('models/examples.npy'):
-        # diavazw to array pou exw apo8hkeuvmeno sto numpy , to kanw convert se kanoniko set opws to examples
         numpyArray = np.load("models/examples.npy")
         oldEvidence = []
         oldEvidence = convertToSet(numpyArray)
@@ -65,7 +68,7 @@ def incrementalLearning(currentRandomVars, sizeOfCurrentSet, currentEvidence):
         percentageOfCurrentDataset = 100
 
     facts = ""
-
+    #if our model has evidences create the updated probabilities from random variables
     if os.path.exists('models/examples.npy'):
         for key, value in currentRandomVars.items():
             if checkKey(oldRandomVariables, key) == 1:
@@ -87,8 +90,8 @@ def incrementalLearning(currentRandomVars, sizeOfCurrentSet, currentEvidence):
             facts = facts + str(value) + "::" + key + ".\n"
 
     np.save("models/examples.npy", np.array(newEvidence))
-    return newEvidence, facts, len(newEvidence)
-
+    return newEvidence, facts, len(newEvidence) #this function return newevidence(the new array from all evidences, from old and current model), facts, and the len of evidences
+#this function takes as input the file name (csv file) and returns the train model
 def createModel(fileName):
     tweetsList = readCSV(fileName)
     analyzer = SentimentIntensityAnalyzer()
@@ -131,10 +134,7 @@ def createModel(fileName):
         randomVariables[keywordsList[i]] = False
 
     initialDict = randomVariables.copy()
-    examples1 = []
-    numpyExamples = []
-    testar = []
-    # with these for loop in llist example put all evidences
+    # with these for loop in list example put all evidences
     for i in range(1, len(tweetsList)):
         tempDict = initialDict.copy()
         # print(i)
@@ -147,7 +147,7 @@ def createModel(fileName):
 
         orderedDictionary = collections.OrderedDict(sorted(tempDict.items()))
         orderedDictionary = {Term(k): v for k, v in
-                             orderedDictionary.items()}  # conver each key from dictionary to Term
+                             orderedDictionary.items()}  # convert each key from dictionary to Term
         examples.append([(key, value) for key, value in
                          orderedDictionary.items()])  # append the instance of evidence in examples
 
@@ -156,9 +156,7 @@ def createModel(fileName):
     newString = ""
     newExamples = []
 
-    # print(np.__version__)
-
-    # here create the rules
+    # here create the rules based on evidence set
     for key, value in c.most_common():
         rules = "visitLocation:-"
         final = value / len(tweetsList)
@@ -221,7 +219,7 @@ def createModel(fileName):
     # store the trained model in txt file
     if os.path.exists('models/model.txt'):
         os.remove('models/model.txt')
-    # apo8hkeuw to trained model se txt arxeio
+
     text_file = open("models/model.txt", "w")
     text_file.write(str(lenOfSet) + "\n")
     text_file.write(finalModelIncremental)

@@ -16,18 +16,18 @@ import csv
 import pandas as pd
 import collections
 import json
-
+#this function takes as input text, and the userlocation and return the prediction value
 def evaluationOfNewTweet(tweetText,userLoc):
     randomVariables = {}
     analyzer = SentimentIntensityAnalyzer()
 
-    # diavazw to text arxeio opou einai oi trained rules kai ta facts
+    # read the file that contains the trained model
     with open('models/model.txt') as f:
         content = f.readlines()
         content = [x.strip() for x in content]
 
     trainedModelStr = ""
-    # create model based on txt
+    # create model based on txt file
     for i in range(1, len(content)):
         trainedModelStr = trainedModelStr + content[i] + "\n"
 
@@ -40,6 +40,7 @@ def evaluationOfNewTweet(tweetText,userLoc):
 
     evidence = []
     evidenceDict = {}
+    #this proccess is for evaluation of one tweet at the time
     evidenceDict = randomVariables.copy()
     p = PrologString(trainedModelStr)
     engine = DefaultEngine()
