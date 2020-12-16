@@ -25,4 +25,6 @@ scikit-learn	0.21.3
 
 scipy	1.4.1
 
+problog 2.1.0.39
+
 After the installation run 'executeMachineLearningSystem.py' script
