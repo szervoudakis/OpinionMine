@@ -82,6 +82,9 @@ class PageOne(tk.Frame):
         incrementalButton = tk.Button(frame, text="Incremental Learning", fg="black",
                                 command=lambda: beginTrain(str(combo.get()), message, txt, label1))
         incrementalButton.pack(side=tk.LEFT, pady=30, padx=10)
+        initialTrainButton = tk.Button(frame, text="Initial Training", fg="black",
+                                      command=lambda: beginInitTrain(str(combo.get()), message, txt, label1))
+        initialTrainButton.pack(side=tk.LEFT, pady=30, padx=10)
         clearButton = tk.Button(frame, text="Clear", fg="black",
                                 command=lambda: deleteModel(txt,label1))
         clearButton.pack(side=tk.LEFT, pady=30, padx=10)
@@ -205,6 +208,27 @@ def beginTrain(selectedValue,message,txt,lbl):
     else:
         txt.config(state='normal')
         txt.delete(1.0, tk.END)
+        createModel(selectedValue)
+        with open("models/model.txt", "r") as myfile:
+            rules = myfile.readlines()
+        rulesInsert = ""
+        for i in range(1,len(rules)):
+            rulesInsert = rulesInsert + rules[i] + "\n"
+        txt.insert(1.0,rulesInsert)
+        lbl['text']="Τhe model was trained with "+rules[0]+ "samples"
+        txt.config(state=DISABLED)
+        messagebox.showinfo('Success', 'Τhe models learning was successful ')
+def beginInitTrain(selectedValue,message,txt,lbl):
+    if (selectedValue == message[0]):
+        messagebox.showinfo('Message title', 'Please insert the dataset that we use in the train proccess ')
+    else:
+        txt.config(state='normal')
+        txt.delete(1.0, tk.END)
+        if os.path.exists('models/model.txt'):
+            path = 'models/*'
+            r = glob.glob(path)
+            for i in r:
+                os.remove(i)
         createModel(selectedValue)
         with open("models/model.txt", "r") as myfile:
             rules = myfile.readlines()

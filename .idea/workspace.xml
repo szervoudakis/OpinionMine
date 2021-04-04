@@ -2,20 +2,77 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fe0387c-474e-43c6-a5f5-7c6fbaacedbe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OpinionMine/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/projectForTwitter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/projectForTwitter.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EntitiesOfTweet.py" beforeDir="false" afterPath="$PROJECT_DIR$/EntitiesOfTweet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OpinionMine/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/EntitiesOfTweet.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpinionMine/EntitiesOfTweet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/appGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpinionMine/appGUI.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/cleanDataset.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/createModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpinionMine/createModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/datasetsForTrain/clear.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/datasetsForTrain/creteisland2018.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/datasetsForTrain/train1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/datasetsForTrain/train1_first100.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/datasetsForTrain/train2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/datasetsForTrain/train3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/datasetsForTrain/train3first1000.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/datasetsForTrain/trainMarge2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/datasetsForTrain/trainSet.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/aek.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/alltweets.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/crete2018.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/creteIsland2018.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/finaltweets.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/forPositiveSet.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/negative.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/negativeSet.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/negativeSet1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/newSample1763_86.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/places.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/posSet.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/positiveSet.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/positiveSet1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/positiveSettemp.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/relatedWordstemp.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/setWithOtherHashtags.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/testSet.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/trainSet2400 - Copy.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/trainSet2459.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/trainSet2807_286.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/trainSet3200.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/trump.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/tweetsSummerVacation.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/tweetsVisitCrete.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/vacation.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/visitcrete2018Henri.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempCsvs/visitcrete2019Henri.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempFromHenri/#crete2018.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempFromHenri/#creteIsland2018.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempFromHenri/#visitcrete2018.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/tempFromHenri/#visitcrete2019.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/testSet/test2_20.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/testSet/test3_20.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/testSet/test4_20.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/testSet/test5_20.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/testSet/testSet.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/testSet/train.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/testSet/trump.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/datasets/testSet/vacation.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/evaluationOfModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpinionMine/evaluationOfModel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/evaluationOfNewTweet.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpinionMine/evaluationOfNewTweet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/executeMachineLearningSystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpinionMine/executeMachineLearningSystem.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpinionMine/functions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/models/examples.npy" beforeDir="false" afterPath="$PROJECT_DIR$/OpinionMine/models/examples.npy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/models/model.txt" beforeDir="false" afterPath="$PROJECT_DIR$/OpinionMine/models/model.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/myTweets.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpinionMine/myTweets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OpinionMine/rmseScript.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/appGUI.py" beforeDir="false" afterPath="$PROJECT_DIR$/appGUI.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cleanDataset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/createModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/createModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluationOfModel.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluationOfModel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/evaluationOfNewTweet.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluationOfNewTweet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/executeMachineLearningSystem.py" beforeDir="false" afterPath="$PROJECT_DIR$/executeMachineLearningSystem.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/examples.npy" beforeDir="false" afterPath="$PROJECT_DIR$/models/examples.npy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/model.txt" beforeDir="false" afterPath="$PROJECT_DIR$/models/model.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/myTweets.py" beforeDir="false" afterPath="$PROJECT_DIR$/myTweets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rmseScript.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/relatedWords.csv" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/relatedWords.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/examples.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/model.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +91,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1QDtGMBLK3W8RPaQ4M1yAnN831A" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -51,7 +109,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.executeMachineLearningSystem">
+  <component name="RunManager" selected="Python.appGUI">
     <configuration name="appGUI" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="projectForTwitter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -180,8 +238,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.executeMachineLearningSystem" />
         <item itemvalue="Python.appGUI" />
+        <item itemvalue="Python.executeMachineLearningSystem" />
         <item itemvalue="Python.evaluationOfModel" />
         <item itemvalue="Python.createModel" />
         <item itemvalue="Python.fixes" />
